@@ -1,0 +1,228 @@
+<!-- Invisible Friends -->
+
+<?php
+
+$pdo = new PDO('mysql:host=localhost;dbname=damms', 'root', '');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$statement = $pdo->prepare("SELECT * FROM invisiblefriends ;");
+$statement->execute();
+$collections = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>invisible friends</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="collectionsedit.css" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+      <div
+        class="container d-flex align-items-center justify-content-lg-between"
+      >
+        <h1
+          class="logo me-auto me-lg-0"
+          style="text-shadow: 0px 0px 10px yellow"
+        >
+          <a href="homepage.php">DAMMS<span>.</span></a>
+        </h1>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+          <ul>
+            <li><a class="nav-link scrollto" href="homepage.php">Home</a></li>
+            <li>
+              <a class="nav-link scrollto" href="admin-collections.php"
+                >My collections</a
+              >
+            </li>
+            <li><a class="nav-link scrollto active" href="mint3.php">MINT NFT</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+      </div>
+    </header>
+    <!-- End Header -->
+
+
+    <!--  -->
+
+    <section class="collections">
+      <!--logo  -->
+      <div class="logo">
+        <img src="assets/img/3.gif" alt="" />
+      </div>
+
+      <!-- info    -->
+      <div class="info">
+        <div class="name">
+          <h1>Invisible Friends</h1>
+        </div>
+
+        <div class="desc">
+        Hiding in the metaverse.
+
+Invisible Friends is a collection of  animated invisible characters by Bhagat Faizan.
+
+Invisible Friends is a Random Character Collective project.
+        </div>
+      </div>
+
+      <div class="collection-container"  >
+       
+       <h1 class="name"> NFT's</h1>
+       <h2 align="center" class="name" style="font-size: 80px;">  
+          <?php 
+       $statement = $pdo->prepare("SELECT * FROM invisiblefriends order by date desc;");
+       $statement->execute();
+       $collections = $statement->fetchAll(PDO::FETCH_ASSOC);
+       echo  count($collections);
+ 
+       ?> </h2>
+ 
+       </div>
+      <div class="btn">
+        <a href="mint3.php" class="btn btn-success " >+   MINT NFT</a>
+      </div>
+    </section>
+
+    <div id="preloader"></div>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+
+<!--  desc over-->
+
+<!-- main info -->
+
+<div class="maincontainer">
+
+
+<div class="container">
+ 
+<table>
+
+<tr>
+<!-- <th>ID</th> -->
+<th>MEDIA</th>
+<th>NAME</th>  
+<th>PRICE</th>
+<th>STATUS</th>
+<th>HOLDER</th>
+<th>ACTION</th>
+
+</tr>
+<?php foreach ($collections as $c) { ?>
+<tr>
+<!-- <td><?php echo $c['id']  ?></td> -->
+<td>
+<img src="<?php echo $c['image']  ?>" alt="" width="100px" height="100px" style="border-radius: 10%; box-shadow: 0px 0px 7px gray;"/>
+</td>
+<td>
+<?php echo $c['name']; ?>
+</td>
+<td>
+  <div id="pricecontainer">
+    <div class="symbol">
+
+    <img src="assets/img/eth.svg" alt="">
+
+    </div>
+    <div class="amount">
+<?php echo $c['price']; ?>
+</div></div>
+</td>
+
+<td>
+
+    <?php 
+
+    $owner =  $c['owner'];
+    if($owner == null){
+      echo "LISTED FOR SALE"; 
+    }
+    else{
+      echo "SOLD";
+    }
+
+    ?>
+
+  </td> 
+    <td>
+
+    <?php
+    if($owner == null){
+      echo "&#8212;";
+    }
+    else{
+      echo $owner;
+    }
+    ?>
+
+
+    </td>
+<td>
+  <form action="deleteif.php" method="post">
+    <input type="hidden" name="id" value="<?php echo $c['id'] ?>">
+    <button type="submit" class="btn btn-danger ">DELETE</a>
+  </form>
+</td>
+</tr>
+
+<?php } ?>
+</table>
+
+
+</div>
+
+
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

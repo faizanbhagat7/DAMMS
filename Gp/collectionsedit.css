@@ -1,0 +1,193 @@
+*{
+    color:white;
+    font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto, Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    /* background-color: #15202b; */
+}
+body{
+    background-color: #15202b;
+}
+
+.collections{
+/* padding:120px; */
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+ margin: 100px 100px;
+ border-bottom: 1px solid white;
+ border-top: 1px solid white;
+ text-align: center;
+
+}
+
+.logo{
+    
+    width: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.info{
+    width: 30%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+
+}
+
+.name{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.desc{
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.container{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    
+
+}
+
+table,th{
+    
+    border-collapse: collapse;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #1c1c1e;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 30px;
+    text-align: center;
+   
+
+
+}
+
+table{
+    width: 100%;
+}
+
+tr,td{
+ background-color: #1c1c1e;
+ padding: 20px; ;
+ 
+}
+
+#pricecontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.symbol > img{
+    width: 20px;
+    height: 70px;
+    margin-right: 8px;
+
+}
+
+
+td > img{
+    width: 200px;
+    height: 200px;
+    margin-right: 8px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px #fff;
+}
+
+td > img:hover{
+    box-shadow: 0px 0px 10px #fff;
+    cursor : pointer;
+
+}
+
+td{
+ font-size: 35px;
+    
+    text-align: center;
+    font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto, Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+
+
+}
+
+.btn{
+    width: 30%;
+}
+
+.amount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.eth > img{
+    
+    
+    margin-right: 8px;
+
+    margin-bottom: 20px;
+}
+.price > h1{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.collections1{
+    /* padding:120px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+     margin: 100px 100px;
+     border-bottom: 1px solid white;
+     border-top: 1px solid white;
+     text-align: center;
+    
+    }
+
+
+    .info1{
+        width: 50%; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: space-around;
+        margin:0px 100px;
+    
+    }
